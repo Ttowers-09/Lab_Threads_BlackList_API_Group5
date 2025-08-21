@@ -3,6 +3,7 @@ package co.eci.blacklist.labs.part2;
 import co.eci.blacklist.infrastructure.HostBlackListsDataSourceFacade;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -19,8 +20,10 @@ class ParallelBlacklistSearchThreadTest {
         when(facade.isInBlackListServer(2, ip)).thenReturn(false);
         when(facade.isInBlackListServer(3, ip)).thenReturn(true);
         when(facade.isInBlackListServer(4, ip)).thenReturn(false);
+        AtomicBoolean stop = new AtomicBoolean(false);
+        int threshold = 5; 
 
-        ParallelBlacklistSearchThread thread = new ParallelBlacklistSearchThread(ip, start, end, facade);
+        ParallelBlacklistSearchThread thread = new ParallelBlacklistSearchThread(ip, start, end, facade, stop, threshold);
         thread.run();
         List<Integer> found = thread.getBlackListOccurrences();
         assertEquals(2, thread.getMatchCount());
