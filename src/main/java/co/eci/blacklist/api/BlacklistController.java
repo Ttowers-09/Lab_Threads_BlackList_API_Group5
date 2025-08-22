@@ -40,9 +40,8 @@ public class BlacklistController {
 
     @GetMapping("/check")
     public ResponseEntity<CheckResponseDTO> check(
-            // @RequestParam @Pattern(regexp = IPV4_REGEX, message = "ip must be a valid
-            // IPv4 address") String ip,
-            @RequestParam String ip,
+            @RequestParam
+            @Pattern(regexp = IPV4_REGEX, message = "ip must be a valid IPv4 address") String ip,
             @RequestParam(defaultValue = "0") @Min(0) @Max(10_000) int threads) {
         int effectiveThreads = threads > 0 ? threads : Math.max(1, Runtime.getRuntime().availableProcessors());
         var res = service.check(ip, effectiveThreads);
