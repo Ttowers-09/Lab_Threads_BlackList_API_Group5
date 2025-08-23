@@ -16,24 +16,24 @@
 
 package co.eci.blacklist.api;
 
-import co.eci.blacklist.api.dto.CheckResponseDTO;
-import co.eci.blacklist.application.BlacklistService;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.eci.blacklist.api.dto.CheckResponseDTO;
+import co.eci.blacklist.application.BlacklistService;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+
 @RestController
 @RequestMapping("/api/v1/blacklist")
 public class BlacklistController {
 
     private final BlacklistService service;
-    private static final String IPV4_REGEX = "^((25[0-5]|2[0-4]\\\\d|[01]?\\\\d\\\\d?)\\\\.){3}(25[0-5]|2[0-4]\\\\d|[01]?\\\\d\\\\d?)$";
-
+    private static final String IPV4_REGEX ="^((25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(25[0-5]|2[0-4]\\d|[01]?\\d\\d?)$";
     public BlacklistController(BlacklistService service) {
         this.service = service;
     }
