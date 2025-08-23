@@ -1,7 +1,21 @@
+
+/**
+ * Clase principal para demostrar el uso de hilos en Java.
+ * Permite comparar la ejecucion concurrente y secuencial de tareas usando CountThread.
+ */
 package co.eci.blacklist.labs.part1;
 
+/**
+ * Ejecuta multiples hilos para contar rangos de numeros y muestra la diferencia entre start() y run().
+ */
 public class CountMainThreads {
-  public static void main(String[] args) throws InterruptedException {
+    /**
+     * Metodo principal. Crea y ejecuta hilos para contar rangos de numeros.
+     * Comentar/descomentar las secciones para probar ejecucion concurrente o secuencial.
+     * @param args Argumentos de linea de comandos
+     * @throws InterruptedException Si ocurre una interrupcion al esperar hilos
+     */
+    public static void main(String[] args) throws InterruptedException {
     CountThread t1 = new CountThread(0, 99);
     CountThread t2 = new CountThread(99, 199);
     CountThread t3 = new CountThread(200, 299);
