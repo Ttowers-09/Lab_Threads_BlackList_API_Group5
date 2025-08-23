@@ -12,7 +12,6 @@ public class BlacklistCheckerTest {
         Policies policies = new Policies();
         policies.setAlarmCount(5);
         HostBlackListsDataSourceFacade facade = HostBlackListsDataSourceFacade.getInstance();
-        // ensure test IP has at least 5 early matches (seeded in facade)
         String ip = "200.24.34.55";
         BlacklistChecker checker = new BlacklistChecker(facade, policies);
         MatchResult result = checker.checkHost(ip, Math.max(2, Runtime.getRuntime().availableProcessors()));
